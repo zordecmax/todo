@@ -56,6 +56,7 @@ function ready(){
         }
         addTaskRow(id,title, date, description);
         new Task(id,title,date,description).save();
+        document.getElementById("myForm").reset();
         console.log(tasks);
     })
 }
@@ -110,7 +111,7 @@ function addTaskRow(id,title,date,description) {
            taskRow.getElementsByClassName('description')[0].innerHTML = `${newDescription}`;
            description = newDescription;
            taskRow.getElementsByClassName('btn-primary')[0].setAttribute("hidden", true);
-           // taskRow.getElementsByClassName('set')[0].innerHTML = `<button  class="btn btn-warning btn-sm">Edit task</button>`
+
        });
 
    });
