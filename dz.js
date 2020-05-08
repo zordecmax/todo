@@ -79,7 +79,8 @@ function addTaskRow(id,title,date,description) {
          <div class="d-flex w-100 justify-content-between">
              <p class="mb-1 description">${description}</p>
              <div class="settings">
-             <span class="set"><button  class="btn btn-warning btn-sm">Edit task</button></span>
+             <span class="save"></span>
+             <span class="edit"><button  class="btn btn-warning btn-sm">Edit task</button></span>
              <button  class="btn btn-danger btn-sm">Delete task</button>
              </div>
          </div>
@@ -95,20 +96,21 @@ function addTaskRow(id,title,date,description) {
         }
         console.log(tasks);
     });
-       taskRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeTaskItem);taskRow.getElementsByClassName('btn-warning')[0].addEventListener('click', ()=>{
-       taskRow.getElementsByClassName('title')[0].innerHTML = `<input type="text" class="form-control edittitle"  placeholder="Title of Task" value="${title}">`;
+       taskRow.getElementsByClassName('btn-danger')[0].addEventListener('click', removeTaskItem);taskRow.getElementsByClassName('btn-warning')[0].addEventListener('click', ()=>{taskRow.getElementsByClassName('title')[0].innerHTML = `<input type="text" class="form-control edittitle"  placeholder="Title of Task" value="${title}">`;
        taskRow.getElementsByClassName('description')[0].innerHTML = `<input type="text" class="form-control edittask-descr"  placeholder="Task Description" value="${description}" >`;
-       taskRow.getElementsByClassName('btn-warning')[0].setAttribute("hidden", true);
-       taskRow.getElementsByClassName('set')[0].innerHTML = `<button  class="btn btn-primary btn-sm">Save task</button>`
+       // taskRow.getElementsByClassName('btn-warning')[0].setAttribute("hidden", true);
+       taskRow.getElementsByClassName('save')[0].innerHTML = `<button  class="btn btn-primary btn-sm">Save task</button>`
        taskRow.getElementsByClassName('btn-primary')[0];
        // Сохраняю данные в форме по клику;
        taskRow.getElementsByClassName('btn-primary')[0].addEventListener('click', () => {
            let newTitle = taskRow.getElementsByClassName('edittitle')[0].value;
            let newDescription  = taskRow.getElementsByClassName('edittask-descr')[0].value;
            taskRow.getElementsByClassName('title')[0].innerHTML = `${newTitle}`;
+           title = newTitle;
            taskRow.getElementsByClassName('description')[0].innerHTML = `${newDescription}`;
+           description = newDescription;
            taskRow.getElementsByClassName('btn-primary')[0].setAttribute("hidden", true);
-           taskRow.getElementsByClassName('set')[0].innerHTML = `<button  class="btn btn-warning btn-sm">Edit task</button>`
+           // taskRow.getElementsByClassName('set')[0].innerHTML = `<button  class="btn btn-warning btn-sm">Edit task</button>`
        });
 
    });
